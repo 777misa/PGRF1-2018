@@ -45,6 +45,7 @@ public class Renderer {
         int dx = x2 - x1;
         int dy = y2 - y1;
         float k = dy / (float) dx;
+        // https://www.google.com/search?q=java+dividing+two+integers
         float q = y1 - k * x1;
 
         if (Math.abs(k) < 1) {

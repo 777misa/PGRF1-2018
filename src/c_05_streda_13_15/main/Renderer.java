@@ -18,6 +18,7 @@ public class Renderer {
     }
 
     private void setLoop() {
+        // časovač, který 30 krát za vteřinu obnoví obsah plátna aktuálním img
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -29,6 +30,7 @@ public class Renderer {
     }
 
     public void clear() {
+        // https://stackoverflow.com/a/5843470
         Graphics g = img.getGraphics();
         g.setColor(Color.BLACK);
         g.clearRect(0, 0, 800, 600);
@@ -38,6 +40,7 @@ public class Renderer {
         int dx = x2 - x1;
         int dy = y2 - y1;
         float k = dy / (float) dx;
+        // https://www.google.com/search?q=java+dividing+two+integers
         float q = y1 - k * x1;
 
         if (Math.abs(k) < 1) {

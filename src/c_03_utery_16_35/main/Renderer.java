@@ -43,6 +43,7 @@ public class Renderer {
 
     public void drawLine(int x1, int y1, int x2, int y2, int color) {
         float k = (y2 - y1) / (float) (x2 - x1);
+        // https://www.google.com/search?q=java+dividing+two+integers
         float q = y1 - k * x1;
 
         // řídící osa X
