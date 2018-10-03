@@ -18,17 +18,19 @@ public class Renderer {
     }
 
     private void setLoop() {
+        // časovač, který 30 krát za vteřinu obnoví obsah plátna aktuálním img
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 // říct plátnu, aby zobrazil aktuální img
                 canvas.getGraphics().drawImage(img, 0, 0, null);
-                // co dělá observer - https://stackoverflow.com/a/1684476
+                // pro zájemce - co dělá observer - https://stackoverflow.com/a/1684476
             }
         }, 0, FPS);
     }
 
     public void clear() {
+        // https://stackoverflow.com/a/5843470
         Graphics g = img.getGraphics();
         g.setColor(Color.BLACK);
         g.clearRect(0, 0, 800, 600);

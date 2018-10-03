@@ -52,7 +52,7 @@ public class PixelTest {
         img.setRGB(x, y, color);
         // říct plátnu, aby zobrazil aktuální img
         canvas.getGraphics().drawImage(img, 0, 0, null);
-        // co dělá observer - https://stackoverflow.com/a/1684476
+        // pro zájemce - co dělá observer - https://stackoverflow.com/a/1684476
     }
 
     public static void main(String[] args) {
