@@ -28,7 +28,7 @@ public class PixelTest {
         canvas = new Canvas();
 
         window.add(canvas); // vložit plátno do okna
-        window.setVisible(true); // zorabzit okno
+        window.setVisible(true); // zobrazit okno
 
         renderer = new Renderer(img, canvas);
 

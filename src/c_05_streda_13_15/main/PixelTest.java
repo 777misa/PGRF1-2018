@@ -34,7 +34,7 @@ public class PixelTest {
         };
 
         window.add(canvas); // vložit plátno do okna
-        window.setVisible(true); // zorabzit okno
+        window.setVisible(true); // zobrazit okno
 
         drawPixel(100, 50, Color.GREEN.getRGB());
         // 0x00ff00 == Color.GREEN.getRGB()
