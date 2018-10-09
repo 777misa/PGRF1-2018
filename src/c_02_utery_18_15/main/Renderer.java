@@ -64,6 +64,33 @@ public class Renderer {
             }
         } else {
             // řídící osa Y
+
+        }
+    }
+
+    public void drawDDA(int x1, int y1, int x2, int y2, int color) {
+        int dx = x2 - x1;
+        int dy = y2 - y1;
+        float x, y, k, h = 0, g = 0;
+
+        k = dy / (float) dx;
+        if (Math.abs(k) < 1) {
+            // řídící osa X
+            g = 1;
+            h = k;
+        } else {
+            // řídící osa Y
+            g = 1 / k;
+            h = 1;
+        }
+
+        x = x1;
+        y = y1;
+
+        for (int i = 0; i <= Math.max(Math.abs(dx), Math.abs(dy)); i++) {
+            drawPixel(Math.round(x), Math.round(y), color);
+            x += g;
+            y += h;
         }
     }
 }
