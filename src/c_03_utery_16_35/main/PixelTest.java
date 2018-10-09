@@ -2,6 +2,8 @@ package c_03_utery_16_35.main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -34,7 +36,7 @@ public class PixelTest {
 
         renderer.drawPixel(100, 50, Color.GREEN.getRGB());
         // 0x00ff00 == Color.GREEN.getRGB()
-        //renderer.drawLine(0, 1, 8, 4, 0x00ff00);
+        // renderer.drawLine(0, 1, 8, 4, 0x00ff00);
 
         canvas.addMouseListener(new MouseAdapter() {
             @Override
@@ -46,9 +48,21 @@ public class PixelTest {
             @Override
             public void mouseDragged(MouseEvent e) {
                 renderer.clear();
-                renderer.drawLine(400, 300, e.getX(), e.getY(), 0xffff00);
+                renderer.drawDDA(400, 300, e.getX(), e.getY(), 0xffff00);
             }
         });
+        canvas.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                System.out.println(e.getKeyCode());
+                // na klávesu C vymazat plátno
+                if (e.getKeyCode() == KeyEvent.VK_C) {
+                    renderer.clear();
+                }
+            }
+        });
+        // chceme, aby canvas měl focus hned při spuštění
+        canvas.requestFocus();
     }
 
     public static void main(String[] args) {
