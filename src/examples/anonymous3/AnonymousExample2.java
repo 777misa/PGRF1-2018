@@ -20,7 +20,7 @@ public class AnonymousExample2 {
             }
         });
         // 2. anonymous using lambda
-        component.addMouseListener((int param) -> System.out.println("clicked - second"));
+        component.addMouseListener(e -> System.out.println("clicked - second"));
         // 3. MyMouseListenerImpl implementation
         component.addMouseListener(new MyMouseListenerImpl());
         // 4. using global anonymous class

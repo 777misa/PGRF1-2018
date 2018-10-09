@@ -12,7 +12,7 @@ public class AnonymousExample1 {
             }
         };
         // the same using lambda
-        // MyListener listener = () -> System.out.println("click called");
+        // MyListener listener2 = () -> System.out.println("click called");
 
         listener.handleMouseClick();
     }

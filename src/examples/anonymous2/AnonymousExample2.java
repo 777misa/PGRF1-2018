@@ -21,7 +21,7 @@ public class AnonymousExample2 {
             }
         });
         // 2. - same as 1., using lambda expression
-        button.addActionListener((ActionEvent e) -> System.out.println("action 2"));
+        button.addActionListener(e -> System.out.println("action 2"));
         // 3.
         button.addActionListener(new MyActionListener());
 
