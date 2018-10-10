@@ -51,6 +51,17 @@ public class PixelTest {
                 renderer.lineDDA(400, 300, e.getX(), e.getY(), 0xffffff);
             }
         });
+        canvas.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                System.out.println(e.getKeyCode());
+                // při zmáčknutí klávesy C vymazat plátno
+                if (e.getKeyCode() == KeyEvent.VK_C) {
+                    renderer.clear();
+                }
+            }
+        });
+        canvas.requestFocus();
     }
 
     public static void main(String[] args) {
