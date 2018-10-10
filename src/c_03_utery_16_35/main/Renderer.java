@@ -93,8 +93,6 @@ public class Renderer {
         }
     }
 
-
-
     /*
     public void drawPolygon(List<Integer> points) {
         clear();

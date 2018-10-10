@@ -42,6 +42,10 @@ public class PixelTest {
             @Override
             public void mouseClicked(MouseEvent e) {
                 renderer.drawPixel(e.getX(), e.getY(), 0xffffff);
+
+                //points.add(e.getX());
+                //points.add(e.getY());
+                //renderer.drawPolygon(points);
             }
         });
         canvas.addMouseMotionListener(new MouseAdapter() {
