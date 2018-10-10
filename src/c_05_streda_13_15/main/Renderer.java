@@ -59,7 +59,30 @@ public class Renderer {
         } else {
             // řídící osa je Y
         }
+    }
 
+    public void lineDDA(int x1, int y1, int x2, int y2, int color) {
+        int dx, dy;
+        dx = x2 - x1;
+        dy = y2 - y1;
+        float k = dy / (float) dx;
+        float g, h;
+        if (Math.abs(k) < 1) {
+            // řídící osa X
+            g = 1;
+            h = k;
+        } else {
+            // řídící osa Y
+            g = 1/k;
+            h = 1;
+        }
+        float x = x1;
+        float y = y1;
+        for (int i = 0; i <= Math.max(Math.abs(dx), Math.abs(dy)); i++) {
+            drawPixel(Math.round(x), Math.round(y), color);
+            x += g;
+            y += h;
+        }
     }
 
     public void drawPixel(int x, int y, int color) {

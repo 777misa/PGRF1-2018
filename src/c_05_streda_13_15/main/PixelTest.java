@@ -2,6 +2,8 @@ package c_05_streda_13_15.main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -46,7 +48,7 @@ public class PixelTest {
             @Override
             public void mouseDragged(MouseEvent e) {
                 renderer.clear();
-                renderer.drawLine(400, 300, e.getX(), e.getY(), 0xffffff);
+                renderer.lineDDA(400, 300, e.getX(), e.getY(), 0xffffff);
             }
         });
     }
