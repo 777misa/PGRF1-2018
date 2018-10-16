@@ -14,6 +14,7 @@ public class PixelTest {
     private BufferedImage img; // objekt pro zápis pixelů
     private Canvas canvas; // plátno pro vykreslení BufferedImage
     private Renderer renderer;
+    private SeedFill seedFill;
 
     public PixelTest() {
         window = new JFrame();
@@ -34,6 +35,9 @@ public class PixelTest {
 
         renderer = new Renderer(img, canvas);
 
+        seedFill = new SeedFill();
+        seedFill.setBufferedImage(img);
+
         renderer.drawPixel(100, 50, Color.GREEN.getRGB());
         // 0x00ff00 == Color.GREEN.getRGB()
         // renderer.drawLine(0, 1, 8, 4, 0x00ff00);
@@ -41,7 +45,12 @@ public class PixelTest {
         canvas.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                renderer.drawPixel(e.getX(), e.getY(), 0xffffff);
+                if (e.isControlDown()) {
+                    seedFill.init(e.getX(), e.getY(), 0x00ffff);
+                    seedFill.fill();
+                } else {
+                    renderer.drawPixel(e.getX(), e.getY(), 0xffffff);
+                }
 
                 //points.add(e.getX());
                 //points.add(e.getY());
@@ -58,7 +67,7 @@ public class PixelTest {
         canvas.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                System.out.println(e.getKeyCode());
+                //System.out.println(e.getKeyCode());
                 // na klávesu C vymazat plátno
                 if (e.getKeyCode() == KeyEvent.VK_C) {
                     renderer.clear();
