@@ -28,6 +28,9 @@ public class SeedFill implements Filler {
         backGround = image.getRGB(x, y);
     }
 
+    // pozor na rekurzivní volání
+    // nutné upravit parametr pro VM "-Xss100m"
+    // https://stackoverflow.com/questions/4967885/jvm-option-xss-what-does-it-do-exactly
     private void seed(int ax, int ay) {
         if ((ax >= 0) && (ay >= 0) && (ax < image.getWidth()) && (ay < image.getHeight()) && backGround == image.getRGB(ax, ay)) {
             image.setRGB(ax, ay, color);
