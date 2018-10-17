@@ -14,6 +14,7 @@ public class PixelTest {
     private BufferedImage img; // objekt pro zápis pixelů
     private Canvas canvas; // plátno pro vykreslení BufferedImage
     private Renderer renderer;
+    private SeedFiller seedFiller;
 
     public PixelTest() {
         window = new JFrame();
@@ -34,6 +35,9 @@ public class PixelTest {
 
         renderer = new Renderer(img, canvas);
 
+        seedFiller = new SeedFiller();
+        seedFiller.setBufferedImage(img);
+
         renderer.drawPixel(100, 50, Color.GREEN.getRGB());
         // 0x00ff00 == Color.GREEN.getRGB()
         renderer.drawLine(0, 1, 8, 4, 0xffff00);
@@ -41,7 +45,13 @@ public class PixelTest {
         canvas.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                renderer.drawPixel(e.getX(), e.getY(), 0xffffff);
+
+                if (e.isControlDown()) {
+                    seedFiller.init(e.getX(), e.getY(), 0xff00ff);
+                    seedFiller.fill();
+                } else {
+                    renderer.drawPixel(e.getX(), e.getY(), 0xffffff);
+                }
 
                 //points.add(e.getX());
                 //points.add(e.getY());
