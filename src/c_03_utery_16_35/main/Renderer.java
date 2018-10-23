@@ -1,44 +1,11 @@
 package c_03_utery_16_35.main;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class Renderer {
 
-    private BufferedImage img;
-    private Canvas canvas;
-    private static final int FPS = 1000 / 30;
+    private Raster raster;
 
-    public Renderer(BufferedImage img, Canvas canvas) {
-        this.img = img;
-        this.canvas = canvas;
-        setTimer();
-    }
-
-    private void setTimer() {
-        // časovač, který 30 krát za vteřinu obnoví obsah plátna aktuálním img
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                // říct plátnu, aby zobrazil aktuální img
-                canvas.getGraphics().drawImage(img, 0, 0, null);
-                // pro zájemce - co dělá observer - https://stackoverflow.com/a/1684476
-            }
-        }, 0, FPS);
-    }
-
-    public void clear() {
-        // https://stackoverflow.com/a/5843470
-        Graphics g = img.getGraphics();
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, 800, 600);
-    }
-
-    public void drawPixel(int x, int y, int color) {
-        // nastavit pixel do img
-        img.setRGB(x, y, color);
+    public Renderer(Raster raster) {
+        this.raster = raster;
     }
 
     public void drawLine(int x1, int y1, int x2, int y2, int color) {
@@ -60,7 +27,7 @@ public class Renderer {
 
             for (int x = x1; x <= x2; x++) {
                 int y = Math.round(k * x + q);
-                drawPixel(x, y, color);
+                raster.drawPixel(x, y, color);
             }
         } else {
             // řídící osa Y
@@ -87,7 +54,7 @@ public class Renderer {
         float y = y1;
 
         for (int i = 0; i <= Math.max(Math.abs(dx), Math.abs(dy)); i++) {
-            drawPixel(Math.round(x), Math.round(y), color);
+            raster.drawPixel(Math.round(x), Math.round(y), color);
             x += g;
             y += h;
         }
