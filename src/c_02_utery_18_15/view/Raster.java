@@ -24,7 +24,7 @@ public class Raster extends Canvas {
             @Override
             public void run() {
                 // říct plátnu, aby zobrazil aktuální img
-                if (getGraphics() == null) return;
+                if (getGraphics() == null) return; // kontrola, protože graphics je null, dokud se nezavolá window.setVisible(true)
                 getGraphics().drawImage(bi, 0, 0, null);
                 // pro zájemce - co dělá observer - https://stackoverflow.com/a/1684476
             }

@@ -14,6 +14,7 @@ public class Raster /*extends Canvas*/ {
     public static final int WIDTH = 800;
 
     public Raster() {
+        // inicializace image, nastavení rozměrů (nastavení typu - pro nás nedůležité)
         img = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
         canvas = new Canvas();
         setTimer();

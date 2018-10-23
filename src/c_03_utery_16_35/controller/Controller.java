@@ -29,8 +29,6 @@ public class Controller {
 
         seedFill = new SeedFill();
         seedFill.setRaster(raster);
-
-        raster.getCanvas().requestFocus();
     }
 
     private void initListeners() {
@@ -67,6 +65,8 @@ public class Controller {
                 }
             }
         });
+        // chceme, aby canvas měl focus hned při spuštění
+        raster.requestFocus();
     }
 
 
