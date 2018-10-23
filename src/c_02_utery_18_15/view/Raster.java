@@ -33,7 +33,7 @@ public class Raster extends Canvas {
 
     public void clear() {
         // https://stackoverflow.com/a/5843470
-        Graphics g = getGraphics();
+        Graphics g = bi.getGraphics();
         g.setColor(Color.BLACK);
         g.clearRect(0, 0, WIDTH, HEIGHT);
     }
