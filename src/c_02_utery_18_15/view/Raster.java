@@ -14,7 +14,7 @@ public class Raster extends Canvas {
 
     public Raster() {
         // inicializace image, nastavení rozměrů (nastavení typu - pro nás nedůležité)
-        this.bi = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+        bi = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
         setLoop();
     }
 
@@ -46,4 +46,5 @@ public class Raster extends Canvas {
     public int getPixel(int x, int y) {
         return bi.getRGB(x, y);
     }
+
 }
