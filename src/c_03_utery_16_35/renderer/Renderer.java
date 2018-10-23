@@ -1,4 +1,6 @@
-package c_03_utery_16_35.main;
+package c_03_utery_16_35.renderer;
+
+import c_03_utery_16_35.view.Raster;
 
 public class Renderer {
 

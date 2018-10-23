@@ -1,37 +1,39 @@
-package c_03_utery_16_35.main;
+package c_03_utery_16_35.controller;
 
-import javax.swing.*;
-import java.awt.*;
+import c_03_utery_16_35.view.Raster;
+import c_03_utery_16_35.renderer.Renderer;
+import c_03_utery_16_35.fill.SeedFill;
+import c_03_utery_16_35.view.PGRFWindow;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 
-public class PixelTest {
+public class Controller {
 
-    private JFrame window;
+    private SeedFill seedFill;
     private Raster raster;
     private Renderer renderer;
-    private SeedFill seedFill;
 
-    public PixelTest() {
-        window = new JFrame();
-        // bez tohoto nastavení se okno zavře, ale aplikace stále běží na pozadí
-        window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        window.setSize(800, 600); // velikost okna
-        window.setLocationRelativeTo(null);// vycentrovat okno
-        window.setTitle("PGRF1 cvičení"); // titulek okna
+    public Controller(PGRFWindow window) {
+        initObjects(window);
+        initListeners();
+    }
 
+    private void initObjects(PGRFWindow window) {
         raster = new Raster();
-
         window.add(raster.getCanvas()); // vložit plátno do okna
-        window.setVisible(true); // zobrazit okno
 
         renderer = new Renderer(raster);
 
         seedFill = new SeedFill();
-        //seedFill.setBufferedImage(img);
+        seedFill.setRaster(raster);
+
+        raster.getCanvas().requestFocus();
+    }
+
+    private void initListeners() {
 
         raster.getCanvas().addMouseListener(new MouseAdapter() {
             @Override
@@ -65,14 +67,7 @@ public class PixelTest {
                 }
             }
         });
-        // chceme, aby canvas měl focus hned při spuštění
-        raster.getCanvas().requestFocus();
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(PixelTest::new);
-        // https://www.google.com/search?q=SwingUtilities.invokeLater
-        // https://www.javamex.com/tutorials/threads/invokelater.shtml
-        // https://www.google.com/search?q=java+double+colon
-    }
+
 }
