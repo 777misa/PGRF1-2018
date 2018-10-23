@@ -35,7 +35,7 @@ public class Raster extends Canvas {
         // https://stackoverflow.com/a/5843470
         Graphics g = getGraphics();
         g.setColor(Color.BLACK);
-        g.clearRect(0, 0, Raster.WIDTH, Raster.HEIGHT);
+        g.clearRect(0, 0, WIDTH, HEIGHT);
     }
 
     public void drawPixel(int x, int y, int color) {
