@@ -5,10 +5,9 @@ import java.awt.image.BufferedImage;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Raster /*extends Canvas*/ {
+public class Raster extends Canvas {
 
     private BufferedImage img;
-    private Canvas canvas;
     private static final int FPS = 1000 / 30;
     public static final int HEIGHT = 600;
     public static final int WIDTH = 800;
@@ -16,7 +15,6 @@ public class Raster /*extends Canvas*/ {
     public Raster() {
         // inicializace image, nastavení rozměrů (nastavení typu - pro nás nedůležité)
         img = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-        canvas = new Canvas();
         setTimer();
     }
 
@@ -26,8 +24,8 @@ public class Raster /*extends Canvas*/ {
             @Override
             public void run() {
                 // říct plátnu, aby zobrazil aktuální img
-                if (canvas.getGraphics() == null) return;
-                canvas.getGraphics().drawImage(img, 0, 0, null);
+                if (getGraphics() == null) return; // kontrola, protože graphics je null, dokud se nezavolá window.setVisible(true)
+                getGraphics().drawImage(img, 0, 0, null);
                 // pro zájemce - co dělá observer - https://stackoverflow.com/a/1684476
             }
         }, 0, FPS);
@@ -46,10 +44,6 @@ public class Raster /*extends Canvas*/ {
 
     public int getPixel(int x, int y) {
         return img.getRGB(x, y);
-    }
-
-    public Canvas getCanvas() {
-        return canvas;
     }
 
 }
