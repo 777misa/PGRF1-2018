@@ -23,19 +23,17 @@ public class Controller {
 
     private void initObjects(PGRFWindow window) {
         raster = new Raster();
-        window.add(raster.getCanvas()); // vložit plátno do okna
+        window.add(raster); // vložit plátno do okna
 
         renderer = new Renderer(raster);
 
         seedFill = new SeedFill();
         seedFill.setRaster(raster);
-
-        raster.getCanvas().requestFocus();
     }
 
     private void initListeners() {
 
-        raster.getCanvas().addMouseListener(new MouseAdapter() {
+        raster.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.isControlDown()) {
@@ -50,14 +48,14 @@ public class Controller {
                 //renderer.drawPolygon(points);
             }
         });
-        raster.getCanvas().addMouseMotionListener(new MouseAdapter() {
+        raster.addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
                 raster.clear();
                 renderer.drawDDA(400, 300, e.getX(), e.getY(), 0xffff00);
             }
         });
-        raster.getCanvas().addKeyListener(new KeyAdapter() {
+        raster.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 //System.out.println(e.getKeyCode());
@@ -67,6 +65,8 @@ public class Controller {
                 }
             }
         });
+        // chceme, aby canvas měl focus hned při spuštění
+        raster.requestFocus();
     }
 
 

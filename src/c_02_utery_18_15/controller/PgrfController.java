@@ -23,10 +23,10 @@ public class PgrfController {
 
     private void initObjects(PgrfWindow window) {
         raster = new Raster();
-
         window.add(raster); // vložit plátno do okna
 
         renderer = new Renderer(raster);
+
         seedFill = new SeedFill();
         seedFill.setRaster(raster);
     }

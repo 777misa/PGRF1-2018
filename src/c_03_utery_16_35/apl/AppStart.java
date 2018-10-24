@@ -9,9 +9,11 @@ public class AppStart {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            PGRFWindow pgrfWindow = new PGRFWindow();
-            new Controller(pgrfWindow);
-            pgrfWindow.setVisible(true);
+            PGRFWindow window = new PGRFWindow();
+            new Controller(window);
+            window.setVisible(true);
         });
+        // https://www.google.com/search?q=SwingUtilities.invokeLater
+        // https://www.javamex.com/tutorials/threads/invokelater.shtml
     }
 }
