@@ -1,6 +1,10 @@
 package c_03_utery_16_35.renderer;
 
+import c_03_utery_16_35.model.Point;
 import c_03_utery_16_35.view.Raster;
+
+import java.awt.*;
+import java.util.List;
 
 public class Renderer {
 
@@ -46,10 +50,18 @@ public class Renderer {
             // řídící osa X
             g = 1;
             h = k;
+            if (x1 > x2) {
+                x1 = x2;
+                y1 = y2;
+            }
         } else {
             // řídící osa Y
             g = 1 / k;
             h = 1;
+            if (y1 > y2) {
+                x1 = x2;
+                y1 = y2;
+            }
         }
 
         float x = x1;
@@ -60,6 +72,22 @@ public class Renderer {
             x += g;
             y += h;
         }
+    }
+
+    public void drawPolygon(List<Point> polygonPoints, int color) {
+        for (int i = 0; i < polygonPoints.size() - 1; i++) {
+            drawDDA(polygonPoints.get(i).x,
+                    polygonPoints.get(i).y,
+                    polygonPoints.get(i + 1).x,
+                    polygonPoints.get(i + 1).y,
+                    color);
+        }
+        drawDDA(polygonPoints.get(0).x,
+                polygonPoints.get(0).y,
+                polygonPoints.get(polygonPoints.size()-1).x,
+                polygonPoints.get(polygonPoints.size()-1).y,
+                color);
+
     }
 
     /*
