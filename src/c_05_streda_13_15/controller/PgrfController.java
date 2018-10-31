@@ -1,19 +1,24 @@
 package c_05_streda_13_15.controller;
 
+import c_05_streda_13_15.model.Point;
 import c_05_streda_13_15.view.Raster;
 import c_05_streda_13_15.renderer.Renderer;
 import c_05_streda_13_15.fill.SeedFiller;
 
+import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PgrfController {
 
     private Raster raster;
     private Renderer renderer;
     private SeedFiller seedFiller;
+    private List<Point> polygonPoints = new ArrayList<>();
 
     public PgrfController(Raster raster) {
         this.raster = raster;
@@ -31,25 +36,32 @@ public class PgrfController {
     private void initListeners() {
         raster.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    polygonPoints.add(new Point(e.getX(), e.getY()));
+                    if (polygonPoints.size() == 1) { // při prvním kliknutí přidat rovnou i druhý bod
+                        polygonPoints.add(new Point(e.getX(), e.getY()));
+                    }
+                }
+            }
 
+            @Override
+            public void mouseClicked(MouseEvent e) {
                 if (e.isControlDown()) {
                     seedFiller.init(e.getX(), e.getY(), 0xff00ff);
                     seedFiller.fill();
-                } else {
-                    raster.drawPixel(e.getX(), e.getY(), 0xffffff);
                 }
-
-                //points.add(e.getX());
-                //points.add(e.getY());
-                //renderer.drawPolygon(points);
             }
         });
         raster.addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
-                raster.clear();
-                renderer.lineDDA(400, 300, e.getX(), e.getY(), 0xffffff);
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    polygonPoints.get(polygonPoints.size() - 1).x = e.getX();
+                    polygonPoints.get(polygonPoints.size() - 1).y = e.getY();
+                    raster.clear();
+                    renderer.drawPolygon(polygonPoints, 0xff0000);
+                }
             }
         });
         raster.addKeyListener(new KeyAdapter() {

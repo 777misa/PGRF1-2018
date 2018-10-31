@@ -1,6 +1,9 @@
 package c_05_streda_13_15.renderer;
 
+import c_05_streda_13_15.model.Point;
 import c_05_streda_13_15.view.Raster;
+
+import java.util.List;
 
 public class Renderer {
 
@@ -45,10 +48,18 @@ public class Renderer {
             // řídící osa X
             g = 1;
             h = k;
+            if (x1 > x2) {
+                x1 = x2;
+                y1 = y2;
+            }
         } else {
             // řídící osa Y
-            g = 1/k;
+            g = 1 / k;
             h = 1;
+            if (y1 > y2) {
+                x1 = x2;
+                y1 = y2;
+            }
         }
         float x = x1;
         float y = y1;
@@ -59,11 +70,28 @@ public class Renderer {
         }
     }
 
+    public void drawPolygon(List<Point> polygonPoints, int color) {
+        for (int i = 0; i < polygonPoints.size() - 1; i++) {
+            lineDDA(polygonPoints.get(i).x,
+                    polygonPoints.get(i).y,
+                    polygonPoints.get(i + 1).x,
+                    polygonPoints.get(i + 1).y,
+                    color
+            );
+        }
+        lineDDA(polygonPoints.get(0).x,
+                polygonPoints.get(0).y,
+                polygonPoints.get(polygonPoints.size() - 1).x,
+                polygonPoints.get(polygonPoints.size() - 1).y,
+                color
+        );
+    }
+
     /*
     public void drawPolygon(List<Integer> points) {
         clear();
         drawLine(points.get(0), points.get(1), points.get(2), points.get(3));
-        i += 2;
+        i += 1;
         // for cyklus po dvou se správným omezením
         drawLine(points.get(i), points.get(i + 1), points.get(i + 2), points.get(i + 3));
     }
