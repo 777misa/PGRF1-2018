@@ -87,6 +87,17 @@ public class Renderer {
         );
     }
 
+    public void drawLines(List<Point> linePoints, int color) {
+        for (int i = 0; i < linePoints.size() - 1; i+=2) {
+            lineDDA(linePoints.get(i).x,
+                    linePoints.get(i).y,
+                    linePoints.get(i + 1).x,
+                    linePoints.get(i + 1).y,
+                    color
+            );
+        }
+    }
+
     /*
     public void drawPolygon(List<Integer> points) {
         clear();

@@ -19,6 +19,7 @@ public class PgrfController {
     private Renderer renderer;
     private SeedFiller seedFiller;
     private List<Point> polygonPoints = new ArrayList<>();
+    private List<Point> linePoints = new ArrayList<>();
 
     public PgrfController(Raster raster) {
         this.raster = raster;
@@ -42,6 +43,9 @@ public class PgrfController {
                     if (polygonPoints.size() == 1) { // při prvním kliknutí přidat rovnou i druhý bod
                         polygonPoints.add(new Point(e.getX(), e.getY()));
                     }
+                } else if (SwingUtilities.isRightMouseButton(e)) {
+                    linePoints.add(new Point(e.getX(), e.getY()));
+                    linePoints.add(new Point(e.getX(), e.getY()));
                 }
             }
 
@@ -59,9 +63,11 @@ public class PgrfController {
                 if (SwingUtilities.isLeftMouseButton(e)) {
                     polygonPoints.get(polygonPoints.size() - 1).x = e.getX();
                     polygonPoints.get(polygonPoints.size() - 1).y = e.getY();
-                    raster.clear();
-                    renderer.drawPolygon(polygonPoints, 0xff0000);
+                } else if (SwingUtilities.isRightMouseButton(e)) {
+                    linePoints.get(linePoints.size() - 1).x = e.getX();
+                    linePoints.get(linePoints.size() - 1).y = e.getY();
                 }
+                update();
             }
         });
         raster.addKeyListener(new KeyAdapter() {
@@ -75,6 +81,13 @@ public class PgrfController {
             }
         });
         raster.requestFocus();
+    }
+
+    private void update() {
+        raster.clear();
+        renderer.drawLines(linePoints, 0x00ff00);
+        renderer.drawPolygon(polygonPoints, 0xff0000);
+
     }
 
 }
