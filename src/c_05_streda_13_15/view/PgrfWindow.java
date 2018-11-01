@@ -15,6 +15,8 @@ public class PgrfWindow extends JFrame {
 
         // inicializace plátna, do kterého budeme kreslit img
         raster = new Raster();
+        raster.setFocusable(true);
+        raster.grabFocus();
 
         add(raster); // vložit plátno do okna
     }

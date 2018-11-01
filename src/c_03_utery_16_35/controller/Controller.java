@@ -29,6 +29,8 @@ public class Controller {
 
     private void initObjects(PGRFWindow window) {
         raster = new Raster();
+        raster.setFocusable(true);
+        raster.grabFocus();
         window.add(raster); // vložit plátno do okna
 
         renderer = new Renderer(raster);
@@ -88,8 +90,6 @@ public class Controller {
                 }
             }
         });
-        // chceme, aby canvas měl focus hned při spuštění
-        raster.requestFocus();
     }
 
     private void update() {

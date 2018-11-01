@@ -73,14 +73,13 @@ public class PgrfController {
         raster.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                System.out.println(e.getKeyCode());
+                //System.out.println(e.getKeyCode());
                 // při zmáčknutí klávesy C vymazat plátno
                 if (e.getKeyCode() == KeyEvent.VK_C) {
                     raster.clear();
                 }
             }
         });
-        raster.requestFocus();
     }
 
     private void update() {
