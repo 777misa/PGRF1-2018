@@ -30,7 +30,7 @@ public class Raster extends JPanel {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                // říct plátnu, aby zobrazil aktuální img
+                // říct plátnu, aby zobrazilo aktuální img
                 repaint();
             }
         }, 0, FPS);
