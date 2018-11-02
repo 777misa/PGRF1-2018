@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.util.Timer;
 import java.util.TimerTask;
 
+// za bonus implementace návrhového vzoru Singleton
 public class Raster extends JPanel {
 
     private BufferedImage img;
