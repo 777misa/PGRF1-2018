@@ -3,7 +3,7 @@ package c_03_utery_16_35.renderer;
 import c_03_utery_16_35.model.Point;
 import c_03_utery_16_35.view.Raster;
 
-import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Renderer {
@@ -89,6 +89,28 @@ public class Renderer {
                 color);
 
     }
+
+    public List<Point> clip(List<Point> polygonPoints, List<Point> clipPoints) {
+        // in - seznam vrcholů ořezávaného polygonu (na tabuli ten černý)
+        // clipPoints - seznam vrcholů ořezávacího polygonu (na tabuli ten zelený)
+        // out - seznam vrcholů ořezaného
+
+        List<Point> in = polygonPoints;
+
+        Point p1 = null;//vložit ten poslední clip point
+        for (Point p2 : clipPoints) {
+            List<Point> out = new ArrayList<>();
+            // vytvoř hranu z bodů p1 a p2
+            // Point v1 = in.last;
+            for (Point v2 : in) {
+                // algoritmus
+            }
+            p1 = p2;
+            in = out;
+        }
+        return in;
+    }
+
 
     /*
     public void drawPolygon(List<Integer> points) {

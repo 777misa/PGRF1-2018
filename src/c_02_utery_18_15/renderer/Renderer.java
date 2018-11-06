@@ -3,6 +3,7 @@ package c_02_utery_18_15.renderer;
 import c_02_utery_18_15.model.Point;
 import c_02_utery_18_15.view.Raster;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Renderer {
@@ -105,4 +106,25 @@ public class Renderer {
         }
     }
 
+    public List<Point> clip(List<Point> polygon, List<Point> clipPolygon) {
+        // in - seznam vrcholů ořezávaného polygonu (na tabuli ten černý)
+        // clipPolygon - ořezávací polygon (na tabuli ten zelený)
+        // out - seznam vrcholů ořezaného polygonu
+
+        List<Point> in = polygon;
+
+        Point p1 = null; // vlož poslední clip point
+        for (Point p2 : clipPolygon) {
+            List<Point> out = new ArrayList<>();
+            // vytvoř hranu z bodů p1 a p2
+            // Point v1 = in.last
+            for (Point v2 : in) {
+                // TODO algoritmus
+            }
+            p1 = p2;
+            in = out; // aktualizuj ořezávaný polygon
+        }
+
+        return in;
+    }
 }
