@@ -2,6 +2,7 @@ package c_02_utery_18_15.renderer;
 
 import c_02_utery_18_15.model.Point;
 import c_02_utery_18_15.view.Raster;
+import transforms.Point2D;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,12 +96,12 @@ public class Renderer {
 
     }
 
-    public void drawLines(List<Point> linePoints, int color) {
+    public void drawLines(List<Point2D> linePoints, int color) {
         for (int i = 0; i < linePoints.size() - 1; i += 2) {
-            drawDDA(linePoints.get(i).x,
-                    linePoints.get(i).y,
-                    linePoints.get(i + 1).x,
-                    linePoints.get(i + 1).y,
+            drawDDA((int) linePoints.get(i).getX(),
+                    (int) linePoints.get(i).getY(),
+                    (int) linePoints.get(i + 1).getX(),
+                    (int) linePoints.get(i + 1).getY(),
                     color
             );
         }

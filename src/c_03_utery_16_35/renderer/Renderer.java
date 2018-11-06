@@ -84,8 +84,8 @@ public class Renderer {
         }
         drawDDA(polygonPoints.get(0).x,
                 polygonPoints.get(0).y,
-                polygonPoints.get(polygonPoints.size()-1).x,
-                polygonPoints.get(polygonPoints.size()-1).y,
+                polygonPoints.get(polygonPoints.size() - 1).x,
+                polygonPoints.get(polygonPoints.size() - 1).y,
                 color);
 
     }
