@@ -128,7 +128,6 @@ public class Controller {
 
         //List<Point> out = renderer.clip(...)
         //renderer.drawPolygon(out, 0xfff000);
-
     }
 
 

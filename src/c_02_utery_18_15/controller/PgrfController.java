@@ -113,6 +113,9 @@ public class PgrfController {
         raster.clear();
         renderer.drawLines(linePoints, 0x00ff00);
         renderer.drawPolygon(polygonPoints, 0xff0000);
+
+        //List<Point> out = renderer.clip(...)
+        //renderer.drawPolygon(out, 0xfff000);
     }
 
 }
