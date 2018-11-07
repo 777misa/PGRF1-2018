@@ -2,6 +2,7 @@ package c_05_streda_13_15.renderer;
 
 import c_05_streda_13_15.model.Point;
 import c_05_streda_13_15.view.Raster;
+import transforms.Point2D;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +73,7 @@ public class Renderer {
     }
 
     public void drawPolygon(List<Point> polygonPoints, int color) {
+        if (polygonPoints.size() < 2) return;
         for (int i = 0; i < polygonPoints.size() - 1; i++) {
             lineDDA(polygonPoints.get(i).x,
                     polygonPoints.get(i).y,
@@ -88,12 +90,12 @@ public class Renderer {
         );
     }
 
-    public void drawLines(List<Point> linePoints, int color) {
+    public void drawLines(List<Point2D> linePoints, int color) {
         for (int i = 0; i < linePoints.size() - 1; i += 2) {
-            lineDDA(linePoints.get(i).x,
-                    linePoints.get(i).y,
-                    linePoints.get(i + 1).x,
-                    linePoints.get(i + 1).y,
+            lineDDA((int) linePoints.get(i).getX(),
+                    (int) linePoints.get(i).getY(),
+                    (int) linePoints.get(i + 1).getX(),
+                    (int) linePoints.get(i + 1).getY(),
                     color
             );
         }
