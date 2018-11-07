@@ -3,6 +3,7 @@ package c_05_streda_13_15.renderer;
 import c_05_streda_13_15.model.Point;
 import c_05_streda_13_15.view.Raster;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Renderer {
@@ -88,7 +89,7 @@ public class Renderer {
     }
 
     public void drawLines(List<Point> linePoints, int color) {
-        for (int i = 0; i < linePoints.size() - 1; i+=2) {
+        for (int i = 0; i < linePoints.size() - 1; i += 2) {
             lineDDA(linePoints.get(i).x,
                     linePoints.get(i).y,
                     linePoints.get(i + 1).x,
@@ -96,6 +97,27 @@ public class Renderer {
                     color
             );
         }
+    }
+
+    public List<Point> clip(List<Point> polygonPoints, List<Point> clipPoints) {
+        // in - seznam vtcholů ořezávaného polygonu (na tabuli je ten černý)
+        // clipPoints - seznam vrcholů ořezávacího polygonu (na tabuli ten zelený)
+        // out - seznam vrcholů ořezaného polygonu (na tabuli ten čárkovaný)
+
+        List<Point> in = polygonPoints;
+
+        Point p1 = null; // vložit poslední clip point
+        for (Point p2 : clipPoints) {
+            List<Point> out = new ArrayList<>();
+            // Edge e = // vytvoření hrany z bodů p1 a p2
+            // Point v1 = in.last
+            for (Point v2 : in) {
+                // TODO algoritmus
+            }
+            p1 = p2;
+            in = out;
+        }
+        return in;
     }
 
 }
