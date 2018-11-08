@@ -73,7 +73,6 @@ public class Renderer {
     }
 
     public void drawPolygon(List<Point> polygonPoints, int color) {
-        if (polygonPoints.size() < 2) return;
         for (int i = 0; i < polygonPoints.size() - 1; i++) {
             lineDDA(polygonPoints.get(i).x,
                     polygonPoints.get(i).y,
@@ -82,6 +81,7 @@ public class Renderer {
                     color
             );
         }
+        // spoj poslední a první
         lineDDA(polygonPoints.get(0).x,
                 polygonPoints.get(0).y,
                 polygonPoints.get(polygonPoints.size() - 1).x,
