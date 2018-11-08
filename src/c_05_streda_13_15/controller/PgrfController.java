@@ -23,7 +23,7 @@ public class PgrfController {
     private Renderer renderer;
     private SeedFiller seedFiller;
     private List<Point> polygonPoints = new ArrayList<>();
-    private List<Point> clipPoints = new ArrayList<>();
+    private List<Point> clipPoints = new ArrayList<>(); // TODO
     private List<Point2D> linePoints = new ArrayList<>();
 
     private Mat3 transl = new Mat3Identity();
@@ -112,6 +112,8 @@ public class PgrfController {
         }
         renderer.drawLines(transformedLines, 0x00ff00);
 
+        //List<Point> out = renderer.clip(...)
+        //renderer.drawPolygon(out, 0xfff000);
     }
 
 }

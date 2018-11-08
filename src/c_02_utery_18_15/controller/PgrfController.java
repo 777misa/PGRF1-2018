@@ -24,7 +24,7 @@ public class PgrfController {
     private Renderer renderer;
     private SeedFill seedFill;
     private final List<Point> polygonPoints = new ArrayList<>();
-    private final List<Point> clipPoints = new ArrayList<>();
+    private final List<Point> clipPoints = new ArrayList<>(); // TODO
     private final List<Point2D> linePoints = new ArrayList<>();
 
     private Mat3 transl = new Mat3Identity();

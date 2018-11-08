@@ -117,8 +117,9 @@ public class Renderer {
                 // TODO algoritmus
             }
             p1 = p2;
-            in = out;
+            in = out; // aktualizuj ořezávaný polygon
         }
+
         return in;
     }
 

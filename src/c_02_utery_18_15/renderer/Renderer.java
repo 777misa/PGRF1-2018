@@ -108,9 +108,9 @@ public class Renderer {
     }
 
     public List<Point> clip(List<Point> polygon, List<Point> clipPolygon) {
-        // in - seznam vrcholů ořezávaného polygonu (na tabuli ten černý)
-        // clipPolygon - ořezávací polygon (na tabuli ten zelený)
-        // out - seznam vrcholů ořezaného polygonu
+        // in - seznam vtcholů ořezávaného polygonu (na tabuli je ten černý)
+        // clipPoints - seznam vrcholů ořezávacího polygonu (na tabuli ten zelený)
+        // out - seznam vrcholů ořezaného polygonu (na tabuli ten čárkovaný)
 
         List<Point> in = polygon;
 

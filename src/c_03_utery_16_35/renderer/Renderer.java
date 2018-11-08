@@ -100,23 +100,24 @@ public class Renderer {
     }
 
     public List<Point> clip(List<Point> polygonPoints, List<Point> clipPoints) {
-        // in - seznam vrcholů ořezávaného polygonu (na tabuli ten černý)
+        // in - seznam vtcholů ořezávaného polygonu (na tabuli je ten černý)
         // clipPoints - seznam vrcholů ořezávacího polygonu (na tabuli ten zelený)
-        // out - seznam vrcholů ořezaného
+        // out - seznam vrcholů ořezaného polygonu (na tabuli ten čárkovaný)
 
         List<Point> in = polygonPoints;
 
-        Point p1 = null;//vložit ten poslední clip point
+        Point p1 = null;// vložit poslední clip point
         for (Point p2 : clipPoints) {
             List<Point> out = new ArrayList<>();
             // vytvoř hranu z bodů p1 a p2
             // Point v1 = in.last;
             for (Point v2 : in) {
-                // algoritmus
+                // TODO algoritmus
             }
             p1 = p2;
-            in = out;
+            in = out; // aktualizuj ořezávaný polygon
         }
+
         return in;
     }
 
