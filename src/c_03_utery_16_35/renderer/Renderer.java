@@ -88,6 +88,15 @@ public class Renderer {
                 polygonPoints.get(polygonPoints.size() - 1).y,
                 color);
 
+    public void drawLines(List<Point2D> linePoints, int color) {
+        for (int i = 0; i < linePoints.size() - 1; i += 2) {
+            drawDDA((int) linePoints.get(i).getX(),
+                    (int) linePoints.get(i).getY(),
+                    (int) linePoints.get(i + 1).getX(),
+                    (int) linePoints.get(i + 1).getY(),
+                    color
+            );
+        }
     }
 
     public List<Point> clip(List<Point> polygonPoints, List<Point> clipPoints) {
