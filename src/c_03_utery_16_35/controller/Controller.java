@@ -92,6 +92,8 @@ public class Controller {
                             linePoints.get(linePoints.size() - 1).withY(e.getY())
                     );
                 } else if (SwingUtilities.isMiddleMouseButton(e)) {
+                    // přinásobit k původní matici novou matici, která vyjadřuje relativní změnu pozice,
+                    // tím se dosáhne toho, že se všechna předchozí posunutí přičtou k tomu novému
                     transl = transl.mul(new Mat3Transl2D(e.getX() - mx, e.getY() - my));
                     mx = e.getX();
                     my = e.getY();
