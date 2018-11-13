@@ -3,7 +3,6 @@ package c_02_utery_18_15.controller;
 import c_02_utery_18_15.fill.SeedFill;
 import c_02_utery_18_15.model.Point;
 import c_02_utery_18_15.renderer.Renderer;
-import c_02_utery_18_15.view.PgrfWindow;
 import c_02_utery_18_15.view.Raster;
 import transforms.Mat3;
 import transforms.Mat3Transl2D;
@@ -27,17 +26,13 @@ public class PgrfController {
     private final List<Point2D> linePoints = new ArrayList<>();
     private int mx, my;
 
-    public PgrfController(PgrfWindow window) {
-        initObjects(window);
+    public PgrfController(Raster raster) {
+        this.raster = raster;
+        initObjects();
         initListeners();
     }
 
-    private void initObjects(PgrfWindow window) {
-        raster = new Raster();
-        raster.setFocusable(true);
-        raster.grabFocus();
-        window.add(raster); // vložit plátno do okna
-
+    private void initObjects() {
         renderer = new Renderer(raster);
 
         seedFill = new SeedFill();
