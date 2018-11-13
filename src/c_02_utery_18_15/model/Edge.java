@@ -50,6 +50,12 @@ public class Edge {
         return 0;
     }
 
+    /**
+     * Zjistí, na které straně přímky tvořené touto úsečkou se nachází bod z parametru
+     *
+     * @param point testovaný bod
+     * @return true pokud se nachází uvnitř (za předpokladu správné orientace)
+     */
     public boolean inside(Point point) {
         Point t = new Point(x2 - x1, y2 - y1);
         Point n = new Point(t.y, -t.x);
@@ -58,16 +64,20 @@ public class Edge {
         return (v.x * n.x + v.y * n.y < 0);
     }
 
+    /**
+     * Vypočítání průsečíku dvou hran
+     *
+     * @param v1 první bod druhé hrany
+     * @param v2 druhý bod druhé hrany
+     * @return průsečík
+     */
     public Point getIntersection(Point v1, Point v2) {
 
         float x0 = ((v1.x * v2.y - v1.y * v2.x) * (x1 - x2) - (x1 * y2 - y1 * x2) * (v1.x - v2.x))
-
                 / (float) ((v1.x - v2.x) * (y1 - y2) - (x1 - x2) * (v1.y - v2.y));
 
         float y0 = ((v1.x * v2.y - v1.y * v2.x) * (y1 - y2) - (x1 * y2 - y1 * x2) * (v1.y - v2.y))
-
                 / (float) ((v1.x - v2.x) * (y1 - y2) - (x1 - x2) * (v1.y - v2.y));
-
 
         return new Point(Math.round(x0), Math.round(y0));
     }

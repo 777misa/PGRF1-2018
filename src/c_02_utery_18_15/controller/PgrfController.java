@@ -5,6 +5,7 @@ import c_02_utery_18_15.model.Point;
 import c_02_utery_18_15.renderer.Renderer;
 import c_02_utery_18_15.view.Raster;
 import transforms.Mat3;
+import transforms.Mat3Identity;
 import transforms.Mat3Transl2D;
 import transforms.Point2D;
 
@@ -22,8 +23,10 @@ public class PgrfController {
     private Renderer renderer;
     private SeedFill seedFill;
     private final List<Point> polygonPoints = new ArrayList<>();
-    private final List<Point> clipPoints = new ArrayList<>();
+    private final List<Point> clipPoints = new ArrayList<>(); // TODO
     private final List<Point2D> linePoints = new ArrayList<>();
+
+    private Mat3 transl = new Mat3Identity();
     private int mx, my;
 
     public PgrfController(Raster raster) {
@@ -82,10 +85,9 @@ public class PgrfController {
                             linePoints.get(linePoints.size() - 1).withY(e.getY())
                     );
                 } else if (SwingUtilities.isMiddleMouseButton(e)) {
-                    Mat3 transl = new Mat3Transl2D(e.getX() - mx, e.getY() - my);
-                    for (int i = 0; i < linePoints.size(); i++) {
-                        linePoints.set(i, linePoints.get(i).mul(transl));
-                    }
+                    // přinásobit k původní matici novou matici, která vyjadřuje relativní změnu pozice,
+                    // tím se dosáhne toho, že se všechna předchozí posunutí přičtou k tomu novému
+                    transl = transl.mul(new Mat3Transl2D(e.getX() - mx, e.getY() - my));
                     mx = e.getX();
                     my = e.getY();
                 }
@@ -106,8 +108,13 @@ public class PgrfController {
 
     private void update() {
         raster.clear();
-        renderer.drawLines(linePoints, 0x00ff00);
         renderer.drawPolygon(polygonPoints, 0xff0000);
+
+        List<Point2D> transformedLines = new ArrayList<>();
+        for (Point2D point : linePoints) {
+            transformedLines.add(point.mul(transl));
+        }
+        renderer.drawLines(transformedLines, 0x00ff00);
 
         //List<Point> out = renderer.clip(...)
         //renderer.drawPolygon(out, 0xfff000);

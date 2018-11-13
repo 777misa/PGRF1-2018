@@ -23,7 +23,7 @@ public class PgrfController {
     private Renderer renderer;
     private SeedFiller seedFiller;
     private List<Point> polygonPoints = new ArrayList<>();
-    private List<Point> clipPoints = new ArrayList<>();
+    private List<Point> clipPoints = new ArrayList<>(); // TODO
     private List<Point2D> linePoints = new ArrayList<>();
 
     private Mat3 transl = new Mat3Identity();
@@ -83,6 +83,8 @@ public class PgrfController {
                             linePoints.get(linePoints.size() - 1).withY(e.getY())
                     );
                 } else if (SwingUtilities.isMiddleMouseButton(e)) {
+                    // přinásobit k původní matici novou matici, která vyjadřuje relativní změnu pozice,
+                    // tím se dosáhne toho, že se všechna předchozí posunutí přičtou k tomu novému
                     transl = transl.mul(new Mat3Transl2D(e.getX() - mx, e.getY() - my));
                     mx = e.getX();
                     my = e.getY();
@@ -112,6 +114,8 @@ public class PgrfController {
         }
         renderer.drawLines(transformedLines, 0x00ff00);
 
+        //List<Point> out = renderer.clip(...)
+        //renderer.drawPolygon(out, 0xfff000);
     }
 
 }

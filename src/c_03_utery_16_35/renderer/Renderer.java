@@ -2,6 +2,7 @@ package c_03_utery_16_35.renderer;
 
 import c_03_utery_16_35.model.Point;
 import c_03_utery_16_35.view.Raster;
+import transforms.Point2D;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,34 +81,48 @@ public class Renderer {
                     polygonPoints.get(i).y,
                     polygonPoints.get(i + 1).x,
                     polygonPoints.get(i + 1).y,
-                    color);
+                    color
+            );
         }
+        // spoj poslední a první
         drawDDA(polygonPoints.get(0).x,
                 polygonPoints.get(0).y,
                 polygonPoints.get(polygonPoints.size() - 1).x,
                 polygonPoints.get(polygonPoints.size() - 1).y,
-                color);
+                color
+        );
+    }
 
+    public void drawLines(List<Point2D> linePoints, int color) {
+        for (int i = 0; i < linePoints.size() - 1; i += 2) {
+            drawDDA((int) linePoints.get(i).getX(),
+                    (int) linePoints.get(i).getY(),
+                    (int) linePoints.get(i + 1).getX(),
+                    (int) linePoints.get(i + 1).getY(),
+                    color
+            );
+        }
     }
 
     public List<Point> clip(List<Point> polygonPoints, List<Point> clipPoints) {
-        // in - seznam vrcholů ořezávaného polygonu (na tabuli ten černý)
+        // in - seznam vtcholů ořezávaného polygonu (na tabuli je ten černý)
         // clipPoints - seznam vrcholů ořezávacího polygonu (na tabuli ten zelený)
-        // out - seznam vrcholů ořezaného
+        // out - seznam vrcholů ořezaného polygonu (na tabuli ten čárkovaný)
 
         List<Point> in = polygonPoints;
 
-        Point p1 = null;//vložit ten poslední clip point
+        Point p1 = null;// vložit poslední clip point
         for (Point p2 : clipPoints) {
             List<Point> out = new ArrayList<>();
             // vytvoř hranu z bodů p1 a p2
             // Point v1 = in.last;
             for (Point v2 : in) {
-                // algoritmus
+                // TODO algoritmus
             }
             p1 = p2;
-            in = out;
+            in = out; // aktualizuj ořezávaný polygon
         }
+
         return in;
     }
 

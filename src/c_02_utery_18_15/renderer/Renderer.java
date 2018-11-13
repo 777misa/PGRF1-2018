@@ -77,7 +77,6 @@ public class Renderer {
     }
 
     public void drawPolygon(List<Point> polygonPoints, int color) {
-
         for (int i = 0; i < polygonPoints.size() - 1; i++) {
             drawDDA(polygonPoints.get(i).x,
                     polygonPoints.get(i).y,
@@ -93,7 +92,6 @@ public class Renderer {
                 polygonPoints.get(polygonPoints.size() - 1).y,
                 color
         );
-
     }
 
     public void drawLines(List<Point2D> linePoints, int color) {
@@ -108,9 +106,9 @@ public class Renderer {
     }
 
     public List<Point> clip(List<Point> polygon, List<Point> clipPolygon) {
-        // in - seznam vrcholů ořezávaného polygonu (na tabuli ten černý)
-        // clipPolygon - ořezávací polygon (na tabuli ten zelený)
-        // out - seznam vrcholů ořezaného polygonu
+        // in - seznam vtcholů ořezávaného polygonu (na tabuli je ten černý)
+        // clipPoints - seznam vrcholů ořezávacího polygonu (na tabuli ten zelený)
+        // out - seznam vrcholů ořezaného polygonu (na tabuli ten čárkovaný)
 
         List<Point> in = polygon;
 
