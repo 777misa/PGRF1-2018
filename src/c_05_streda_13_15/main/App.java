@@ -1,7 +1,6 @@
 package c_05_streda_13_15.main;
 
-import c_05_streda_13_15.controller.Controller3D;
-import c_05_streda_13_15.controller.PgrfController;
+import c_05_streda_13_15.controller.*;
 import c_05_streda_13_15.view.PgrfWindow;
 
 import javax.swing.*;

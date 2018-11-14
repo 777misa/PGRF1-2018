@@ -1,7 +1,6 @@
 package c_03_utery_16_35.apl;
 
-import c_03_utery_16_35.controller.Controller;
-import c_03_utery_16_35.controller.Controller3D;
+import c_03_utery_16_35.controller.*;
 import c_03_utery_16_35.view.PGRFWindow;
 
 import javax.swing.*;
