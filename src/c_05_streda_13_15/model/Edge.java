@@ -59,6 +59,7 @@ public class Edge {
     public boolean inside(Point p) {
         Point t = new Point(x2 - x1, y2 - y1);
         //Point n = new Point(t.y, -t.x);
+        @SuppressWarnings("SuspiciousNameCombination")
         Point n = new Point(-t.y, t.x);
         Point v = new Point(p.x - x1, p.y - y1);
         return (v.x * n.x + v.y * n.y < 0);
