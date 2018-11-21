@@ -10,12 +10,14 @@ import java.util.TimerTask;
 public class Raster extends JPanel {
 
     private final BufferedImage img;
+    private final Graphics g;
     private static final int FPS = 1000 / 30;
     public static final int WIDTH = 800, HEIGHT = 600;
 
     public Raster() {
         // inicializace image, nastavení rozměrů (nastavení typu - pro nás nedůležité)
         img = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+        g = img.getGraphics();
         setLoop();
     }
 
@@ -38,8 +40,6 @@ public class Raster extends JPanel {
     }
 
     public void clear() {
-        // https://stackoverflow.com/a/5843470
-        Graphics g = img.getGraphics();
         g.setColor(Color.BLACK);
         g.clearRect(0, 0, WIDTH, HEIGHT);
     }
@@ -51,6 +51,16 @@ public class Raster extends JPanel {
 
     public int getPixel(int x, int y) {
         return img.getRGB(x, y);
+    }
+
+    public void drawLine(double x1, double y1, double x2, double y2, Color color) {
+        g.setColor(color);
+        g.drawLine(
+                (int) Math.round(x1),
+                (int) Math.round(y1),
+                (int) Math.round(x2),
+                (int) Math.round(y2)
+        );
     }
 
 }
