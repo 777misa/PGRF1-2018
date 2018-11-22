@@ -49,6 +49,18 @@ public class Renderer3D {
         a = a.mul(model).mul(view).mul(projection);
         b = b.mul(model).mul(view).mul(projection);
 
+/*
+Homogeneous Coordinates
+https://youtu.be/BwJ8sLYcPzc
+
+https://prateekvjoshi.com/2014/06/13/the-concept-of-homogeneous-coordinates/
+
+Perspective Projection
+https://youtu.be/veLvYQpxe6Y
+
+Homogeneous Coordinates
+https://youtu.be/GGG3cL6vfSc
+*/
         Vec3D v1, v2;
         if (a.dehomog().isPresent()) {
             v1 = a.dehomog().get();
