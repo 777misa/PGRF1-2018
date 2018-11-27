@@ -2,9 +2,11 @@ package c_03_utery_16_35.model3d;
 
 import transforms.Point3D;
 
+import java.awt.*;
+
 public class Cube extends Solid {
 
-    public Cube(int color) {
+    public Cube(Color color) {
         this.color = color;
         vertices.add(new Point3D(-1, -1, 1));
         vertices.add(new Point3D(1, -1, 1));

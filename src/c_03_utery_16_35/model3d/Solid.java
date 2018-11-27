@@ -2,15 +2,17 @@ package c_03_utery_16_35.model3d;
 
 import transforms.Point3D;
 
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Solid {
 
-    int color;
-    List<Point3D> vertices;
-    List<Integer> indices;
+    Color color;
+    final List<Point3D> vertices = new ArrayList<>();
+    final List<Integer> indices = new ArrayList<>();
 
-    public int getColor() {
+    public Color getColor() {
         return color;
     }
 
