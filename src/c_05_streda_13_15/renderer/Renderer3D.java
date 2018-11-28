@@ -24,11 +24,7 @@ public class Renderer3D {
         Vec3D u = new Vec3D(0, 0, 1);
         view = new Mat4ViewRH(e, v, u);
 
-        projection = new Mat4PerspRH(
-                Math.PI / 4,
-                Raster.HEIGHT / (double) Raster.WIDTH,
-                0.1,
-                200);
+        projection = new Mat4PerspRH(Math.PI / 4, Raster.HEIGHT / (double) Raster.WIDTH, 0.1, 200);
     }
 
     public void draw(Solid... solids) {
