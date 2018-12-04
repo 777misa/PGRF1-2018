@@ -1,6 +1,6 @@
 package c_02_utery_18_15.main;
 
-import c_02_utery_18_15.controller.*;
+import c_02_utery_18_15.controller.PgrfController3D;
 import c_02_utery_18_15.view.PgrfWindow;
 
 import javax.swing.*;

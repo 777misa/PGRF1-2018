@@ -1,9 +1,9 @@
 package c_05_streda_13_15.controller;
 
-import c_05_streda_13_15.model.Point;
-import c_05_streda_13_15.view.Raster;
-import c_05_streda_13_15.renderer.Renderer;
 import c_05_streda_13_15.fill.SeedFiller;
+import c_05_streda_13_15.model.Point;
+import c_05_streda_13_15.renderer.Renderer;
+import c_05_streda_13_15.view.Raster;
 import transforms.Mat3;
 import transforms.Mat3Identity;
 import transforms.Mat3Transl2D;
