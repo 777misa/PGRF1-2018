@@ -24,7 +24,7 @@ public class ScanLine implements Filler {
         scanline();
     }
 
-    public void init(List<Point> points, int fillColor, int edgeColor){
+    public void init(List<Point> points, int fillColor, int edgeColor) {
         this.points = points;
         this.fillColor = fillColor;
         this.edgeColor = edgeColor;

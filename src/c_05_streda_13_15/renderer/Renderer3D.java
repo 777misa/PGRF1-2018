@@ -56,7 +56,7 @@ public class Renderer3D {
         a = a.mul(model).mul(view).mul(projection);
         b = b.mul(model).mul(view).mul(projection);
 
-        /*
+/*
 Homogeneous Coordinates
 https://youtu.be/BwJ8sLYcPzc
 

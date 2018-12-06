@@ -64,8 +64,7 @@ public class Controller3D {
 
                     // dodělat zenit, ořezat <-PI/2,PI/2>
                     renderer3D.setView(camera.getViewMatrix());
-                }
-                else if (SwingUtilities.isRightMouseButton(e)) {
+                } else if (SwingUtilities.isRightMouseButton(e)) {
                     double rotX = (mx - e.getX()) / -200.0;
                     double rotY = (my - e.getY()) / -200.0;
                     Mat4 rot = renderer3D.getModel().mul(new Mat4RotXYZ(rotY, 0, rotX));

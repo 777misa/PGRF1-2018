@@ -78,7 +78,7 @@ public class Edge {
 
         float y0 = ((v1.x * v2.y - v1.y * v2.x) * (y1 - y2) - (x1 * y2 - y1 * x2) * (v1.y - v2.y))
                 / (float) ((v1.x - v2.x) * (y1 - y2) - (x1 - x2) * (v1.y - v2.y));
-        
+
         return new Point(Math.round(x0), Math.round(y0));
     }
 

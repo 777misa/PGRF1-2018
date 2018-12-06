@@ -12,15 +12,15 @@ public class Cube extends Solid {
 
     public Cube(Color color) {
         this.color = color;
-        vertices.add(new Point3D(-1,-1,1));
-        vertices.add(new Point3D(1,-1,1));
-        vertices.add(new Point3D(1,1,1));
-        vertices.add(new Point3D(-1,1,1));
+        vertices.add(new Point3D(-1, -1, 1));
+        vertices.add(new Point3D(1, -1, 1));
+        vertices.add(new Point3D(1, 1, 1));
+        vertices.add(new Point3D(-1, 1, 1));
 
-        vertices.add(new Point3D(-1,-1,-1));
-        vertices.add(new Point3D(1,-1,-1));
-        vertices.add(new Point3D(1,1,-1));
-        vertices.add(new Point3D(-1,1,-1));
+        vertices.add(new Point3D(-1, -1, -1));
+        vertices.add(new Point3D(1, -1, -1));
+        vertices.add(new Point3D(1, 1, -1));
+        vertices.add(new Point3D(-1, 1, -1));
 
         indices.add(0); indices.add(1);
         indices.add(1); indices.add(2);
