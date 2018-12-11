@@ -1,7 +1,9 @@
 package c_02_utery_18_15.controller;
 
 import c_02_utery_18_15.model3D.Cube;
+import c_02_utery_18_15.model3D.Cubic3D;
 import c_02_utery_18_15.model3D.Solid;
+import c_02_utery_18_15.model3D.Spiral;
 import c_02_utery_18_15.renderer.Renderer3D;
 import c_02_utery_18_15.view.Raster;
 import transforms.Camera;
@@ -34,6 +36,10 @@ public class PgrfController3D {
         cube = new Cube();
         renderer3D = new Renderer3D(raster);
         renderer3D.add(cube);
+        renderer3D.add(new Spiral());
+        Cubic3D cubic3D = new Cubic3D();
+        cubic3D.create();
+        renderer3D.add(cubic3D);
         resetCamera();
     }
 
