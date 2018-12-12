@@ -1,7 +1,8 @@
 package c_05_streda_13_15.controller;
 
 import c_05_streda_13_15.model3d.Cube;
-import c_05_streda_13_15.model3d.Solid;
+import c_05_streda_13_15.model3d.Cubic3D;
+import c_05_streda_13_15.model3d.Spiral;
 import c_05_streda_13_15.renderer.Renderer3D;
 import c_05_streda_13_15.view.Raster;
 import transforms.Camera;
@@ -18,7 +19,6 @@ import java.awt.event.MouseEvent;
 public class Controller3D {
 
     private final Renderer3D renderer3D;
-    private Solid cube;
     private Camera camera;
 
     private int mx, my;
@@ -30,8 +30,13 @@ public class Controller3D {
     }
 
     private void initObjects() {
-        cube = new Cube();
-        renderer3D.add(cube);
+        renderer3D.add(new Cube());
+        renderer3D.add(new Spiral());
+
+        Cubic3D cubic3D = new Cubic3D();
+        cubic3D.create();
+        renderer3D.add(cubic3D);
+
         resetCamera();
     }
 
