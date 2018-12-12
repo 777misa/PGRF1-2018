@@ -8,7 +8,7 @@ public class Spiral extends Solid {
 
     public Spiral() {
         int i = 0;
-        for (double a = 0; a <= 5; a += 0.1) {
+        for (double a = 0; a <= Math.PI * 8; a += 0.1) {
             double x = Math.cos(a);
             double y = Math.sin(a);
             double z = a / 20;

@@ -2,7 +2,6 @@ package c_03_utery_16_35.controller;
 
 import c_03_utery_16_35.model3d.Cube;
 import c_03_utery_16_35.model3d.Cubic3D;
-import c_03_utery_16_35.model3d.Solid;
 import c_03_utery_16_35.model3d.Spiral;
 import c_03_utery_16_35.renderer.Renderer3D;
 import c_03_utery_16_35.view.Raster;
@@ -21,20 +20,18 @@ import java.awt.event.MouseEvent;
 public class Controller3D {
 
     private Renderer3D renderer3D;
-    private Solid cube;
     private Camera camera;
 
     private int mx, my;
 
     public Controller3D(Raster raster) {
-        renderer3D = new Renderer3D(raster);
-        initObjects();
+        initObjects(raster);
         initListeners(raster);
     }
 
-    private void initObjects() {
-        cube = new Cube(Color.CYAN);
-        renderer3D.add(cube);
+    private void initObjects(Raster raster) {
+        renderer3D = new Renderer3D(raster);
+        renderer3D.add(new Cube(Color.CYAN));
         renderer3D.add(new Spiral());
         Cubic3D cubic = new Cubic3D();
         cubic.create();
