@@ -68,6 +68,7 @@ https://youtu.be/veLvYQpxe6Y
 Homogeneous Coordinates
 https://youtu.be/GGG3cL6vfSc
 */
+        if (a.getW() <= 0 || b.getW() <= 0) return;
 
         // pokud nelze provést dehomogenizaci (w==0), tak ukončit průchod
         if (!a.dehomog().isPresent() || !b.dehomog().isPresent()) {
